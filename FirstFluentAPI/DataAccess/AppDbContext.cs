@@ -1,4 +1,5 @@
-﻿using FirstFluentAPI.Entities;
+﻿using FirstFluentAPI.Configuration;
+using FirstFluentAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -13,7 +14,10 @@ namespace FirstFluentAPI.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetCallingAssembly());
+            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetCallingAssembly());
+            modelBuilder.ApplyConfiguration(new BicyclesTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new CarsTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PersonTypeConfiguration());
         }
     }
 }
